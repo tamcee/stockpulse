@@ -1,5 +1,26 @@
-venv/
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.sqlite3
-*.db
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment variables
 .env
+.flaskenv
+
+# SQLite Database
+database.db
+database.db-shm
+database.db-wal
+
+# macOS
+.DS_Store
+
+# Testing
+.pytest_cache/
