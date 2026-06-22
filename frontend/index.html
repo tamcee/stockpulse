@@ -1,21 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>StockPulse</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Intelligent Fundamental Stock Analysis Platform — Democratizing investment research with automated analysis, interactive visualizations, and educational insights.">
+    <title>StockPulse — Intelligent Stock Analysis</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 </head>
 <body>
-    <h1>StockPulse</h1>
-    <input type="text" id="search" placeholder="Search stocks...">
-    <div id="app">
-        <div id="watchlist-view"></div>
-        <div id="analysis-view"></div>
+    <div class="app-container">
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <h1>StockPulse<span>Intelligent Analysis</span></h1>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">Navigation</div>
+                <div class="nav-item active" data-view="dashboard" id="nav-dashboard">
+                    Dashboard
+                </div>
+                <div class="nav-item" data-view="analysis" id="nav-analysis">
+                    Stock Analysis
+                </div>
+                <div class="nav-item" data-view="compare" id="nav-compare">
+                    Sector Compare
+                </div>
+                <div class="nav-item" data-view="watchlist" id="nav-watchlist">
+                    Watchlist
+                </div>
+
+                <div class="nav-section-title" style="margin-top:24px;">Settings</div>
+                <div class="nav-item" id="nav-api-settings">
+                    API Settings
+                </div>
+            </nav>
+            <div style="padding:12px 16px; border-top:1px solid var(--border-color);">
+                <div style="font-size:11px; color:var(--text-muted); text-align:center;">
+                    <div>Powered by Alpha Vantage</div>
+                    <div style="margin-top:4px;">PBL-IV Project — MUJ 2026</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="topbar">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search stocks (e.g. AAPL, Microsoft)" autocomplete="off">
+                    </div>
+                    <div class="search-results-dropdown" id="searchDropdown"></div>
+                </div>
+
+                <div class="mode-toggle" id="modeToggle">
+                    <button class="mode-btn active" data-mode="beginner" id="modeBeginner">Beginner</button>
+                    <button class="mode-btn" data-mode="advanced" id="modeAdvanced">Advanced</button>
+                </div>
+
+                <div class="topbar-actions" id="topbarActions">
+                    <!-- Auth buttons will be dynamically inserted -->
+                </div>
+            </header>
+
+            <!-- Dynamic Page Content -->
+            <div class="page-content" id="pageContent">
+                <!-- Content rendered by JavaScript -->
+            </div>
+        </main>
     </div>
-    
-    <script src="api.js"></script>
-    <script src="auth.js"></script>
-    <script src="analysis.js"></script>
-    <script src="charts.js"></script>
-    <script src="watchlist.js"></script>
-    <script src="app.js"></script>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="authModalTitle">Sign In</h2>
+                <button class="modal-close" id="authModalClose">×</button>
+            </div>
+            <div id="authModalBody">
+                <!-- Login/Register form inserted by auth.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip Container -->
+    <div class="tooltip" id="tooltipContainer" style="display:none;"></div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/analysis.js"></script>
+    <script src="js/watchlist.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
