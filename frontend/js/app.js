@@ -41,10 +41,6 @@ const App = {
                 document.getElementById('sidebarOverlay').classList.remove('visible');
             });
         });
-
-        document.getElementById('nav-api-settings').addEventListener('click', () => {
-            this._showApiSettings();
-        });
     },
 
     navigateTo(view) {
@@ -174,10 +170,6 @@ const App = {
                 Analysis.renderBeginnerView(data);
             } else {
                 Analysis.renderAdvancedView(data);
-            }
-
-            if (data.isDemo) {
-                this.showToast(`Showing demo data for ${ticker}. Set an API key for live data.`, 'info');
             }
         } catch (e) {
             content.innerHTML = `
@@ -509,48 +501,6 @@ const App = {
         }).join('');
 
         return `<div class="comparison-grid">${headerHtml}${rowsHtml}</div>`;
-    },
-
-    // ============================================================
-    // API SETTINGS
-    // ============================================================
-
-    _showApiSettings() {
-        const modal = document.getElementById('authModal');
-        const title = document.getElementById('authModalTitle');
-        const body = document.getElementById('authModalBody');
-
-        title.textContent = 'API Settings';
-        body.innerHTML = `
-            <form id="apiSettingsForm">
-                <div class="form-group">
-                    <label class="form-label">Alpha Vantage API Key</label>
-                    <input type="text" class="form-input" id="apiKeyInput" placeholder="Enter your API key" value="${localStorage.getItem('alpha_vantage_key') || ''}">
-                    <div style="font-size:12px; color:var(--text-muted); margin-top:6px;">
-                        Get a free key at <a href="https://www.alphavantage.co/support/#api-key" target="_blank">alphavantage.co</a>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width:100%;">Save Settings</button>
-                <p style="font-size:12px; color:var(--text-muted); margin-top:12px; text-align:center;">
-                    Without an API key, the platform uses built-in demo data for 5 stocks (AAPL, MSFT, GOOGL, AMZN, TSLA).
-                </p>
-            </form>
-        `;
-
-        document.getElementById('apiSettingsForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const key = document.getElementById('apiKeyInput').value.trim();
-            if (key) {
-                localStorage.setItem('alpha_vantage_key', key);
-                this.showToast('API key saved!', 'success');
-            } else {
-                localStorage.removeItem('alpha_vantage_key');
-                this.showToast('API key removed. Using demo data.', 'info');
-            }
-            modal.classList.remove('visible');
-        });
-
-        modal.classList.add('visible');
     },
 
     // ============================================================

@@ -7,6 +7,5 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production-2024')
     DATABASE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'database.db')
     DATABASE_URL = os.environ.get('DATABASE_URL')
-    ALPHA_VANTAGE_API_KEY = os.environ.get('ALPHA_VANTAGE_API_KEY', 'demo')
     JWT_EXPIRY_HOURS = 24
     CACHE_TTL_HOURS = 24
