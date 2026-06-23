@@ -2,7 +2,7 @@
 
 **StockPulse** is an Intelligent Fundamental Stock Analysis Platform that democratizes investment research by automating financial analysis, providing interactive visualizations, and offering dual-mode insights (Beginner & Advanced). 
 
-🚀 **Live Demo:** [https://stockpulse-production-0341.up.railway.app](https://stockpulse-production-0341.up.railway.app)
+ **Live Demo:** [https://stockpulse-production-0341.up.railway.app](https://stockpulse-production-0341.up.railway.app)
 
 The platform fetches real financial data from Yahoo Finance (via `yfinance`), processes it through a three-stage analysis pipeline, and presents results via a responsive web interface.
 
